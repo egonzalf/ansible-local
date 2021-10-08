@@ -1,0 +1,55 @@
+---
+- hosts: local
+  become: yes
+
+  tasks:
+    - name: DNF install packages
+      dnf:
+        name:
+          - NetworkManager-openconnect
+          - NetworkManager-openvpn
+          - bzip2
+          - curl
+          - dkms
+          - emacs-nox
+          - emacs-yaml-mode
+          - firefox
+          - gawk
+          - gcc
+          - gcc-c++
+          - git
+          - gitk
+          - htop
+          - kate
+          - kernel-devel
+          - kernel-headers
+          - konsole
+          - kwrite
+          - lsof
+          - nmap
+          - openssh-server
+          - python3
+          - screen
+          - subversion
+          - telnet
+          - tmux
+          - tree
+          - unzip
+          - wget
+        state: present	
+      when: (ansible_facts['distribution'] == "Fedora")
+
+    - name: DNF install fonts
+      dnf:
+        name:
+          - cascadia-fonts-all
+          - gnu-free-fonts-common
+          - gnu-free-mono-fonts
+          - gnu-free-sans-fonts
+          - gnu-free-serif-fonts
+          - google-noto-sans-mono-fonts
+          - levien-inconsolata-fonts
+          - terminus-fonts
+        state: present	
+      when: (ansible_facts['distribution'] == "Fedora")
+

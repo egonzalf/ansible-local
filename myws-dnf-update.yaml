@@ -1,0 +1,10 @@
+---
+- hosts: local
+  become: yes
+
+  tasks:
+    - name: DNF install packages
+      dnf: autoremove=yes
+      when: (ansible_facts['distribution'] == "Fedora")
+    - name: DNF update
+      dnf: state=latest name='*'
