@@ -39,6 +39,12 @@
         state: present	
       when: (ansible_facts['distribution'] == "Fedora")
 
+    - name: SSHD service enabled
+      ansible.builtin.service:
+        name: sshd
+        enabled: true
+        state: started
+
     - name: DNF install fonts
       dnf:
         name:
